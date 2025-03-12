@@ -245,7 +245,7 @@ algorithm_choice, p_list = read_input_file("input.txt")
 
 resources = {"R": 16, "R1": 16, "R2": 16}
 
-if algorithm_choice == 3:
+if algorithm_choice == 4:
     scheduler = SRTF(p_list, resources)
     scheduler.run()
 else:
