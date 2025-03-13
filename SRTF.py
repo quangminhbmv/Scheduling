@@ -193,23 +193,9 @@ class SRTF:
             f.write(" ".join(str(w) for w in waiting_times) + "\n")
 
     def allocate_resources(self, process, index=0, t=0):
-        if index >= len(process.resource_types) or index >= len(process.resource_amounts):
-            return False
-
-        resource_type = process.resource_types[index]
-        resource_amount = process.resource_amounts[index]
-
-        if self.resources.get(resource_type, 0) >= resource_amount:
-            self.resources[resource_type] -= resource_amount
-            process.resource_acquired_time = t
-            process.resource_release_time = t + resource_amount
-            process.resource_type_holding = resource_type
-            process.resource_amount_holding = resource_amount
-            return True
-        return False
+        return True
 
     def calculate(self):
-        print("\n" + f"{'Process':<10} {'Waiting-Time':<16} {'Turn-Around-Time':<20}")
         waiting_times = []
         turnaround_times = []
 
