@@ -191,23 +191,7 @@ class FCFS:
             f.write(" ".join(str(p.w_time) for p in self.processes_list) + "\n")
 
     def allocate_resources(self, process, index=0, t=0):
-        # Kiểm tra xem index có hợp lệ không trước khi truy cập danh sách
-        if index >= len(process.resource_types) or index >= len(process.resource_amounts):
-            return False  # Không thể cấp phát nếu chỉ mục ngoài phạm vi
-
-        resource_type = process.resource_types[index]
-        resource_amount = process.resource_amounts[index]
-
-        # Kiểm tra tài nguyên có đủ để cấp phát không
-        if self.resources.get(resource_type, 0) >= resource_amount:
-            self.resources[resource_type] -= resource_amount
-            process.resource_acquired_time = t
-            process.resource_release_time = t + resource_amount
-            process.resource_type_holding = resource_type
-            process.resource_amount_holding = resource_amount
-            return True  # Cấp phát thành công
-
-        return False  # Không đủ tài nguyên để cấp phát
+        return True
 
     def calculate(self):
         print("\n" + f"{'Process':<10} {'Waiting-Time':<16} {'Turn-Around-Time':<20}")
